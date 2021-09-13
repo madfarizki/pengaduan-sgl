@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         $pengaduan = Pengaduan::all()->count();
 
-        return view('user.landing', ['pengaduan' => $pengaduan]);
+        return view('home', ['pengaduan' => $pengaduan]);
     }
 
     public function tentang()
@@ -31,7 +31,7 @@ class UserController extends Controller
 
     public function pengaduan()
     {
-        return view('user.pengaduan');
+        return view('pages.user.pengaduan');
     }
 
     public function masuk()
