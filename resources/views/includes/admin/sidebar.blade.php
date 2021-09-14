@@ -3,8 +3,8 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="javascript:void(0)">
-          <img src="{{ asset('assets/backend/img/brand/blue.png')}} " class="navbar-brand-img" alt="...">
+        <a class="navbar-brand" href="{{ route('dashboard')}}">
+          <h2 class="text-primary text-uppercase">Sagalaherang</h2>
         </a>
       </div>
       <div class="navbar-inner">
@@ -13,17 +13,35 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="examples/dashboard.html">
+              <a class="nav-link {{ (request()->segment(2) == 'dashboard') ? 'active' : '' }}" href="{{ route('dashboard')}}">
                 <i class="fas fa-tv text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="examples/icons.html">
-                <i class="fas fa-bullhorn text-orange"></i>
-                <span class="nav-link-text">Pengaduan</span>
-              </a>
-            </li>
+            <li class="nav-item nav-with-child">
+                <a class="nav-link {{ (request()->segment(2) == 'pengaduan') ? 'active' : '' }}" href="#">
+                  <i class="fas fa-bullhorn text-orange"></i> Pengaduan
+                  <i class="text-right fas fa-chevron-down"></i>
+                </a>
+                <ul class="nav-item-child">
+                  <li class="nav-item">
+                    <a class="nav-link {{ (request()->segment(2) == 'pengaduan/0') ? 'active' : '' }}" href="{{ route('pengaduan.index', '0')}}">
+                        <i class="fas fa-clipboard-check text-info"></i> Verifikasi & Validasi
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pengaduan.index', 'proses')}}">
+                        <i class="fas fa-sync text-yellow"></i> Sedang Diproses
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pengaduan.index', 'selesai')}}">
+                        <i class="fas fa-check text-success"></i> Selesai
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
             <li class="nav-item">
               <a class="nav-link" href="examples/map.html">
                 <i class="fas fa-list text-primary"></i>

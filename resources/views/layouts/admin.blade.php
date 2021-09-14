@@ -23,6 +23,8 @@
     @include('includes.admin.navbar')
 
     @yield('content')
+
+    @include('includes.admin.footer')
   </div>
   @stack('prepend-script')
   @include('includes.admin.script')

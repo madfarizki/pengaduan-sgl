@@ -9,7 +9,7 @@
     <div class="container">
       <h1>Pengaduan Masyarakat</h1>
       <h2>Kecamatan Sagalaherang</h2>
-      <a href="{{ url('pengaduan')}}" class="btn-get-started scrollto">Buat Pengaduan</a>
+      <a href="{{ route('pengaduan')}}" class="btn-get-started scrollto">Buat Pengaduan</a>
     </div>
   </section><!-- End Hero -->
 

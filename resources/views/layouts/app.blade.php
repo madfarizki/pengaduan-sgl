@@ -58,14 +58,17 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0 ">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
+          <li><a class="nav-link scrollto {{ (request()->is('/')) ? 'active' : '' }}" href="/">Home</a></li>
+          <li><a class="nav-link scrollto {{ (request()->is('tentang')) ? 'active' : '' }}" href="{{ url('tentang')}}">Tentang</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-
-      <a href="#" class="appointment-btn scrollto">Login</a>
+      @auth('masyarakat')
+        <a href="{{ route('user.logout')}}" class="appointment-btn scrollto">Logout</a>
+      @else
+        <a href="{{ url('login')}}" class="appointment-btn scrollto">Login</a>
+      @endauth
 
     </div>
   </header><!-- End Header -->
@@ -82,27 +85,27 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Sagalaherang</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Sagalaherang 41282<br>
+              Subang, Indonesia <br>
+
             </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Tentang</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('tentang')}}">Tentang</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Kontak</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <p>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
             </ul>
           </div>
 
@@ -114,7 +117,7 @@
 
       <div class="me-md-auto my-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>Medilab</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span><a href="https://madfariz.web.id/" target="_blank">MadFariz</a></span></strong>. All Rights Reserved
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
@@ -134,6 +137,7 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

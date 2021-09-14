@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Masyarakat extends Model
+class Masyarakat extends Authenticatable
 {
     use HasFactory;
 
@@ -17,10 +17,11 @@ class Masyarakat extends Model
         'nik',
         'name',
         'email',
-        'email_verified_at'
+        'email_verified_at',
         'username',
         'password',
         'telp',
         'address',
     ];
+
 }

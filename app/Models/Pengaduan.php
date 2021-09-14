@@ -24,4 +24,12 @@ class Pengaduan extends Model
         'foto',
         'status',
     ];
+
+    public function user() {
+        return $this->hasOne(Masyarakat::class, 'nik', 'nik');
+    }
+
+    public function kategori() {
+        return $this->hasOne(Kategori::class, 'id_kategori', 'id_kategori');
+    }
 }

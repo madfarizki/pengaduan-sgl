@@ -614,7 +614,7 @@ var NavbarCollapse = (function() {
 				 $('body').removeClass('nav-open');
 					navbar_menu_visible = 0;
 					$('.bodyClick').remove();
-					
+
 			 });
 
 		 $('body').addClass('nav-open');
@@ -736,6 +736,27 @@ var Tooltip = (function() {
 	if ($tooltip.length) {
 		init();
 	}
+
+})();
+
+var NavWithChild = (function() {
+
+    // Variables
+
+    var $nav = $('.nav-item.nav-with-child');
+    setTimeout(function(){
+        $nav.each(function(index, each) {
+
+                $(each).on('click',function(event) {
+                    if($(each).is('.nav-item-expanded')) {
+                        $(each).removeClass('nav-item-expanded')
+
+                    } else {
+                            $(each).addClass('nav-item-expanded')
+                    }
+                })
+            });
+    },300)
 
 })();
 

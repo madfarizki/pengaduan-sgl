@@ -26,7 +26,7 @@ class UserController extends Controller
 
     public function tentang()
     {
-        return view('user.tentang');
+        return view('pages.user.about');
     }
 
     public function pengaduan()
@@ -36,7 +36,7 @@ class UserController extends Controller
 
     public function masuk()
     {
-        return view('user.masuk');
+        return view('pages.user.login');
     }
 
     public function login(Request $request)
@@ -70,7 +70,7 @@ class UserController extends Controller
 
             if (Auth::guard('masyarakat')->attempt(['email' => $request->username, 'password' => $request->password])) {
 
-                return redirect()->route('pekat.pengaduan');
+                return redirect()->route('pengaduan');
             } else {
 
                 return redirect()->back()->with(['pesan' => 'Akun tidak terdaftar!']);
@@ -96,7 +96,7 @@ class UserController extends Controller
 
                 if (Auth::guard('masyarakat')->attempt(['username' => $request->username, 'password' => $request->password])) {
 
-                    return redirect()->route('pekat.pengaduan');
+                    return redirect()->route('pengaduan');
                 } else {
 
                     return redirect()->back()->with(['pesan' => 'Akun tidak terdaftar!']);
@@ -116,7 +116,7 @@ class UserController extends Controller
 
                 if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password])) {
 
-                    return redirect()->route('dashboard.index');
+                    return redirect()->route('dashboard');
                 } else {
 
                     return redirect()->back()->with(['pesan' => 'Akun tidak terdaftar!']);
@@ -129,7 +129,7 @@ class UserController extends Controller
 
     public function daftar()
     {
-        return view('user.daftar');
+        return view('pages.user.register');
     }
 
     public function register(Request $request)
@@ -171,7 +171,7 @@ class UserController extends Controller
     {
         Auth::guard('masyarakat')->logout();
 
-        return redirect()->route('pekat.index');
+        return redirect('/');
     }
 
     public function storePengaduan(Request $request)
