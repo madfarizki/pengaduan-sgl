@@ -7,6 +7,7 @@ use App\Mail\VerifikasiEmailUntukRegistrasiPengaduanMasyarakat;
 use App\Models\Masyarakat;
 use App\Models\Pengaduan;
 use App\Models\Petugas;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,9 +20,15 @@ class UserController extends Controller
 {
     public function index()
     {
-        $pengaduan = Pengaduan::all()->count();
+        $pengaduan = Pengaduan::count();
+        $proses = Pengaduan::where('status', 'proses')->count();
+        $selesai = Pengaduan::where('status', 'selesai')->count();
 
-        return view('home', ['pengaduan' => $pengaduan]);
+        return view('home', [
+            'pengaduan' => $pengaduan,
+            'proses' => $proses,
+            'selesai' => $selesai,
+        ]);
     }
 
     public function tentang()
@@ -31,7 +38,8 @@ class UserController extends Controller
 
     public function pengaduan()
     {
-        return view('pages.user.pengaduan');
+        $kategori = Kategori::get();
+        return view('pages.user.pengaduan', compact('kategori'));
     }
 
     public function masuk()
@@ -196,6 +204,7 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }
 
+
         if ($request->file('foto')) {
             $data['foto'] = $request->file('foto')->store('assets/pengaduan', 'public');
         }
@@ -209,7 +218,7 @@ class UserController extends Controller
             'isi_laporan' => $data['isi_laporan'],
             'tgl_kejadian' => $data['tgl_kejadian'],
             'lokasi_kejadian' => $data['lokasi_kejadian'],
-            'id_kategori' => $data['kategori_kejadian'],
+            'id_kategori' => $data['id_kategori'],
             'foto' => $data['foto'] ?? 'assets/pengaduan/tambakmekar.png',
             'status' => '0',
         ]);

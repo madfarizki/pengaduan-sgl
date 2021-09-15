@@ -12,7 +12,7 @@
             <h5 class="fw-normal">Sampaikan laporan Anda langsung kepada instansi pemerintah berwenang</h5>
         </div>
        <div class="card card-responsive p-4 border-0 col-md-8 shadow rounded mx-auto">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('pengaduan.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-3">
                 <label for="judul_laporan" class="form-label">Judul Laporan</label>
@@ -27,7 +27,7 @@
             <div class="form-group mb-3">
                 <label for="isi_laporan" class="form-label">Isi Laporan</label>
                 <textarea name="isi_laporan" id="isi_laporan"
-                    placeholder="Ketik isi Pengaduan" rows="5" class="form-control @error('isi_laporan') is-invalid @enderror" required></textarea>
+                    placeholder="Ketik isi Pengaduan" rows="5" class="form-control @error('isi_laporan') is-invalid @enderror" required>{{ old('isi_laporan') }}</textarea>
                 @error('isi_laporan')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -50,7 +50,7 @@
             <div class="form-group mb-3">
                 <label for="lokasi_kejadian" class="form-label">Lokasi Kejadian</label>
                 <textarea name="lokasi_kejadian" id="lokasi_kejadian"
-                    placeholder="Ketik Lokasi Kejadian" rows="3" class="form-control @error('lokasi_kejadian') is-invalid @enderror" required></textarea>
+                    placeholder="Ketik Lokasi Kejadian" rows="3" class="form-control @error('lokasi_kejadian') is-invalid @enderror" required>{{ old('lokasi_kejadian') }}</textarea>
                 @error('lokasi_kejadian')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -59,15 +59,14 @@
             </div>
 
             <div class="form-group mb-3">
-                <label for="kategori_kejadian" class="form-label">Lokasi Kejadian</label>
-                <select name="kategori_kejadian" id="kategori_kejadian" class="form-select" required>
+                <label for="id_kategori" class="form-label">Lokasi Kejadian</label>
+                <select name="id_kategori" id="id_kategori" class="form-select" required>
                     <option value="" selected disabled>Pilih Kategori Kejadian</option>
-                    <option value="agama">Agama</option>
-                    <option value="hukum">Hukum</option>
-                    <option value="lingkungan">Lingkungan</option>
-                    <option value="sosial">Sosial</option>
+                        @foreach($kategori as $kat)
+                        <option value="{{ $kat->id_kategori }} ">{{ $kat->nama_kategori}} </option>
+                        @endforeach
                 </select>
-                @error('kategori_kejadian')
+                @error('id_kategori')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -95,7 +94,6 @@
 @endsection
 
 @push('addon-script')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (!auth('masyarakat')->check())
         <script>
             Swal.fire({

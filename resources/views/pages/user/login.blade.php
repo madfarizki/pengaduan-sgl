@@ -163,6 +163,16 @@
   @stack('prepend-script')
   @include('includes.admin.script')
   @stack('addon-script')
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  @if (session()->has('pesan'))
+        <script>
+            Swal.fire(
+                'Pemberitahuan!',
+                '{{ session()->get('pesan') }}',
+                'error'
+            );
+        </script>
+    @endif
 </body>
 
 </html>

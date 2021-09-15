@@ -38,7 +38,7 @@
                   <div class="">
                     <div class="form-group">
                       <label class="form-control-label">Nama Kategori</label>
-                      <input rows="4" class="form-control" name="nama_kategori" id="nama_kategori" value="{{ $kategori->nama_kategori}}" placeholder="Ketik Nama Kategori">
+                      <input rows="4" class="form-control" name="nama_kategori" id="nama_kategori" value="{{ $kategori->nama_kategori}}" placeholder="Ketik Nama Kategori" required>
                     </div>
                   </div>
 

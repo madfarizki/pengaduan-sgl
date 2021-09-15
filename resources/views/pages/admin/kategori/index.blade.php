@@ -96,6 +96,7 @@
 
 @push('addon-script')
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
 <script>
     $(document).ready(function() {
         $('#pengaduanTable').DataTable();
@@ -103,69 +104,10 @@
 </script>
 
 <script>
+
     $(document).on('click', '#del', function(e) {
         let id = $(this).data('userId');
         console.log(id);
-    });
-
-    $(document).on('click', '.pengaduan', function (e) {
-        e.preventDefault();
-        let id_pengaduan = $(this).data('id_pengaduan');
-        Swal.fire({
-                title: 'Peringatan!',
-                text: "Apakah Anda yakin akan memverifikasi pengaduan?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#28B7B5',
-                confirmButtonText: 'OK',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    type: "POST",
-                    url: '{{ route('tanggapan') }}',
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        "id_pengaduan": id_pengaduan,
-                        "status": "proses",
-                        "tanggapan": ''
-                    },
-                    success: function (response) {
-                        if (response == 'success') {
-                            Swal.fire({
-                                title: 'Pemberitahuan!',
-                                text: "Pengaduan berhasil diverifikasi!",
-                                icon: 'success',
-                                confirmButtonColor: '#28B7B5',
-                                confirmButtonText: 'OK',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.reload();
-                                }else{
-                                    location.reload();
-                                }
-                            });
-                        }
-                    },
-                    error: function (data) {
-                        Swal.fire({
-                            title: 'Pemberitahuan!',
-                            text: "Pengaduan gagal diverifikasi!",
-                            icon: 'error',
-                            confirmButtonColor: '#28B7B5',
-                            confirmButtonText: 'OK',
-                        });
-                    }
-                });
-            } else {
-                Swal.fire({
-                    title: 'Pemberitahuan!',
-                    text: "Pengaduan gagal diverifikasi!",
-                    icon: 'error',
-                    confirmButtonColor: '#28B7B5',
-                    confirmButtonText: 'OK',
-                });
-            }
-        });
     });
 
     $(document).on('click', '.kategoriDelete', function (e) {

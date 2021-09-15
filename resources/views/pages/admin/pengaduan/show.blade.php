@@ -30,7 +30,7 @@
         <div class="row">
           <div class="col-xl-6 order-xl-1">
             <div class="card">
-              <img src="{{ asset('assets/backend/img/theme/img-1-1000x600.jpg')}} " alt="Image placeholder" class="card-img-top">
+              <img src="{{ Storage::url($pengaduan->foto) }} " alt="Image placeholder" class="card-img-top">
               <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <h3>Data Pengaduan</h3>
               </div>

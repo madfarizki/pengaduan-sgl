@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\User\UserController::class, 'index']);
 
 Route::get('/pengaduan',  [\App\Http\Controllers\User\UserController::class, 'pengaduan'])->name('pengaduan');
+Route::post('/pengaduan/kirim',  [\App\Http\Controllers\User\UserController::class, 'storePengaduan'])->name('pengaduan.store');
 
 Route::get('/login',  [\App\Http\Controllers\User\UserController::class, 'masuk']);
 Route::get('/register',  [\App\Http\Controllers\User\UserController::class, 'daftar']);

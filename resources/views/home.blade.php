@@ -62,24 +62,24 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
-              <i class='bx bx-task' ></i>
-              <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Diterima</p>
+              <i class='bx bx-list-check' ></i>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $pengaduan }} " data-purecounter-duration="1" class="purecounter"></span>
+              <p>Semua Pengaduan</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class='bx bx-loader'></i>
-              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Proses</p>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $proses }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Sedang Diproses</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
               <i class='bx bx-check-circle'></i>
-              <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $selesai }}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Selesai</p>
             </div>
           </div>
