@@ -43,7 +43,7 @@
                 </ul>
               </li>
             <li class="nav-item">
-              <a class="nav-link" href="examples/map.html">
+              <a class="nav-link" href="{{ route('kategori.index')}}">
                 <i class="fas fa-list text-primary"></i>
                 <span class="nav-link-text">Kategori Pengaduan</span>
               </a>

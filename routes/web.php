@@ -27,8 +27,8 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login/auth', [\App\Http\Controllers\User\UserController::class, 'login'])->name('user.login');
 
     // Register
-    Route::get('/daftar', [UserController::class, 'daftar'])->name('pekat.daftar');
-    Route::post('/register/auth', [UserController::class, 'register'])->name('pekat.register');
+    // Route::get('/daftar', [UserController::class, 'daftar'])->name('pekat.daftar');
+    // Route::post('/register/auth', [UserController::class, 'register'])->name('pekat.register');
 });
 
 Route::middleware(['isMasyarakat'])->group(function () {
@@ -50,6 +50,9 @@ Route::prefix('admin')->group( function() {
 
         // Tanggapan
         Route::post('tanggapan', [\App\Http\Controllers\Admin\TanggapanController::class, 'response'])->name('tanggapan');
+
+        // Kategori
+        Route::resource('kategori', \App\Http\Controllers\Admin\KategoriController::class);
 
         Route::get('/logout', [\App\Http\Controllers\Admin\AdminController::class, 'logout'])->name('admin.logout');
      });
