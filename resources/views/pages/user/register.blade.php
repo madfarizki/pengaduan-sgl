@@ -65,7 +65,7 @@
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
               <h1 class="text-white">Register</h1>
-              <p class="text-lead text-white">Silahkan login menggunakan akun yang sudah didaftarkan.</p>
+              <p class="text-lead text-white">Silahkan isi form dibawah ini untuk membuat akun baru.</p>
             </div>
           </div>
         </div>
@@ -86,8 +86,8 @@
                 <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
                 <div class="text-center">
                   <a href="#" class="btn btn-neutral btn-icon mr-4">
-                    <span class="btn-inner--icon"><img src="{{ asset('assets/backend/img/icons/common/github.svg')}} "></span>
-                    <span class="btn-inner--text">Github</span>
+                    <span class="btn-inner--icon"><img src="{{ asset('assets/backend/img/icons/common/facebook.svg')}} "></span>
+                    <span class="btn-inner--text">Facebook</span>
                   </a>
                   <a href="#" class="btn btn-neutral btn-icon">
                     <span class="btn-inner--icon"><img src="{{ asset('assets/backend/img/icons/common/google.svg')}}"></span>
@@ -100,12 +100,44 @@
                   <small>Or sign up with credentials</small>
                 </div>
                 <form role="form">
+                    <div class="form-group">
+                        <div class="input-group input-group-merge input-group-alternative mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-key-25"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="NIK" type="text">
+                        </div>
+                      </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-merge input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Nama" type="text">
+                    </div>
+                  </div>
                   <div class="form-group">
                     <div class="input-group input-group-merge input-group-alternative mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Name" type="text">
+                      <input class="form-control" placeholder="Username" type="text">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-merge input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-tablet-button"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Nomor Telpon" type="text">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-merge input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-shop"></i></span>
+                      </div>
+                      <textarea class="form-control" placeholder="Alamat" type="text"></textarea>
                     </div>
                   </div>
                   <div class="form-group">
@@ -124,8 +156,8 @@
                       <input class="form-control" placeholder="Password" type="password">
                     </div>
                   </div>
-                  <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
-                  <div class="row my-4">
+                  <!-- <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div> -->
+                  <!-- <div class="row my-4">
                     <div class="col-12">
                       <div class="custom-control custom-control-alternative custom-checkbox">
                         <input class="custom-control-input" id="customCheckRegister" type="checkbox">
@@ -134,9 +166,9 @@
                         </label>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="text-center">
-                    <button type="button" class="btn btn-primary mt-4">Create account</button>
+                    <button type="button" class="btn btn-primary mt-4">Buat Akun</button>
                   </div>
                 </form>
               </div>

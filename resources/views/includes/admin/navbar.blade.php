@@ -153,7 +153,7 @@
                   <img alt="Image placeholder" src="{{ asset('assets/backend/img/theme/team-1.jpg')}}">
                 </span>
                 <div class="media-body  ml-2  d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Ahmad Alfarizki</span>
+                  <span class="mb-0 text-sm  font-weight-bold">{{ auth('admin')->user()->nama_petugas }}</span>
                 </div>
               </div>
             </a>

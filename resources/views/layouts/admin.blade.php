@@ -29,6 +29,7 @@
   @stack('prepend-script')
   @include('includes.admin.script')
   @stack('addon-script')
+  @include('sweetalert::alert')
 </body>
 
 </html>

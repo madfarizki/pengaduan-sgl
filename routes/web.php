@@ -41,6 +41,9 @@ Route::middleware(['isMasyarakat'])->group(function () {
 Route::prefix('admin')->group( function() {
     Route::middleware('isAdmin')->group( function() {
        Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+
+       Route::resource('/petugas', \App\Http\Controllers\Admin\PetugasController::class);
+       Route::resource('/masyarakat', \App\Http\Controllers\Admin\MasyarakatController::class);
     });
 
     Route::middleware('isPetugas')->group( function() {
