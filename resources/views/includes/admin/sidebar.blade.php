@@ -49,7 +49,7 @@
               </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="examples/register.html">
+                <a class="nav-link" href="{{ route('laporan.index')}}">
                   <i class="fas fa-file-alt text-green"></i>
                   <span class="nav-link-text">Laporan</span>
                 </a>

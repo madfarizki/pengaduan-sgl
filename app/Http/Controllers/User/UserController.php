@@ -135,12 +135,12 @@ class UserController extends Controller
         }
     }
 
-    public function daftar()
+    public function register()
     {
         return view('pages.user.register');
     }
 
-    public function register(Request $request)
+    public function register_post(Request $request)
     {
         $data = $request->all();
 
@@ -160,7 +160,7 @@ class UserController extends Controller
 
         Masyarakat::create([
             'nik' => $data['nik'],
-            'nama' => $data['nama'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'username' => strtolower($data['username']),
             'password' => Hash::make($data['password']),
@@ -172,7 +172,7 @@ class UserController extends Controller
 
         Auth::guard('masyarakat')->login($masyarakat);
 
-        return redirect()->route('pekat.index');
+        return redirect()->route('/');
     }
 
     public function logout()
@@ -232,7 +232,7 @@ class UserController extends Controller
         }
     }
 
-    public function laporan($siapa = '')
+    public function laporan($who = '')
     {
         $terverifikasi = Pengaduan::where([['nik', Auth::guard('masyarakat')->user()->nik], ['status', '!=', '0']])->get()->count();
         $proses = Pengaduan::where([['nik', Auth::guard('masyarakat')->user()->nik], ['status', 'proses']])->get()->count();
@@ -240,24 +240,24 @@ class UserController extends Controller
 
         $hitung = [$terverifikasi, $proses, $selesai];
 
-        if ($siapa == 'me') {
+        if ($who == 'saya') {
 
             $pengaduan = Pengaduan::where('nik', Auth::guard('masyarakat')->user()->nik)->orderBy('tgl_pengaduan', 'desc')->get();
 
-            return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);
+            return view('pages.user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'who' => $who]);
         } else {
 
             $pengaduan = Pengaduan::where('status', '!=', '0')->orderBy('tgl_pengaduan', 'desc')->get();
 
-            return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);
+            return view('pages.user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'who' => $who]);
         }
     }
 
-    public function laporanDetail($id_pengaduan)
+    public function detailPengaduan($id_pengaduan)
     {
         $pengaduan = Pengaduan::where('id_pengaduan', $id_pengaduan)->first();
 
-        return view('user.detail', ['pengaduan' => $pengaduan]);
+        return view('pages.user.detail', ['pengaduan' => $pengaduan]);
     }
 
     public function laporanEdit($id_pengaduan)

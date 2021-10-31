@@ -99,13 +99,19 @@
                 <div class="text-center text-muted mb-4">
                   <small>Or sign up with credentials</small>
                 </div>
-                <form role="form">
+                <form action="{{ route('user.register-post') }}" role="form" method="POST">
+                    @csrf
                     <div class="form-group">
                         <div class="input-group input-group-merge input-group-alternative mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-key-25"></i></span>
                           </div>
-                          <input class="form-control" placeholder="NIK" type="text">
+                          <input type="text" value="{{ old('nik') }}" class="form-control @error('nik') is-invalid @enderror" name="nik" id="nik" placeholder="NIK">
+                            @error('nik')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                       </div>
                   <div class="form-group">
@@ -113,7 +119,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Nama" type="text">
+                      <input type="text" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Nama">
+                        @error('name')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                   </div>
                   <div class="form-group">
@@ -121,7 +132,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Username" type="text">
+                      <input type="text" value="{{ old('username') }}" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username">
+                        @error('username')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                   </div>
                   <div class="form-group">
@@ -129,7 +145,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-tablet-button"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Nomor Telpon" type="text">
+                      <input type="text" value="{{ old('telp') }}" class="form-control @error('telp') is-invalid @enderror" name="telp" id="telp" placeholder="No Telpon">
+                        @error('telp')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                   </div>
                   <div class="form-group">
@@ -137,7 +158,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-shop"></i></span>
                       </div>
-                      <textarea class="form-control" placeholder="Alamat" type="text"></textarea>
+                      <textarea type="text" value="{{ old('address') }}" class="form-control @error('address') is-invalid @enderror" name="address" id="address" placeholder="Alamat"></textarea>
+                        @error('address')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                   </div>
                   <div class="form-group">
@@ -145,7 +171,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Email" type="email">
+                      <input type="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email">
+                        @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                   </div>
                   <div class="form-group">
@@ -153,7 +184,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Password" type="password">
+                      <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password">
+                        @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                   </div>
                   <!-- <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div> -->
@@ -168,7 +204,7 @@
                     </div>
                   </div> -->
                   <div class="text-center">
-                    <button type="button" class="btn btn-primary mt-4">Buat Akun</button>
+                    <button type="submit"  class="btn btn-primary mt-4">Buat Akun</button>
                   </div>
                 </form>
               </div>

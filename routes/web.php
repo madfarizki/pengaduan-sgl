@@ -28,13 +28,17 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login/auth', [\App\Http\Controllers\User\UserController::class, 'login'])->name('user.login');
 
     // Register
-    // Route::get('/daftar', [UserController::class, 'daftar'])->name('pekat.daftar');
-    // Route::post('/register/auth', [UserController::class, 'register'])->name('pekat.register');
+    Route::get('/register', [\App\Http\Controllers\User\UserController::class, 'register'])->name('user.register');
+    Route::post('/register/auth', [\App\Http\Controllers\User\UserController::class, 'register_post'])->name('user.register-post');
 });
 
 Route::middleware(['isMasyarakat'])->group(function () {
      // Logout Masyarakat
      Route::get('/logout', [\App\Http\Controllers\User\UserController::class, 'logout'])->name('user.logout');
+
+
+     Route::get('/laporan/{who?}', [\App\Http\Controllers\User\UserController::class, 'laporan'])->name('pengaduan.laporan');
+     Route::get('/pengaduan-detail/{id_pengaduan}', [\App\Http\Controllers\User\UserController::class, 'detailPengaduan'])->name('pengaduan.detail');
 });
 
 
@@ -44,6 +48,10 @@ Route::prefix('admin')->group( function() {
 
        Route::resource('/petugas', \App\Http\Controllers\Admin\PetugasController::class);
        Route::resource('/masyarakat', \App\Http\Controllers\Admin\MasyarakatController::class);
+
+       Route::get('/laporan', [\App\Http\Controllers\Admin\LaporanController::class, 'index'])->name('laporan.index');
+       Route::post('/laporan-get', [\App\Http\Controllers\Admin\LaporanController::class, 'laporan'])->name('laporan.get');
+       Route::post('/laporan/export', [\App\Http\Controllers\Admin\LaporanController::class, 'export'])->name('laporan.export');
     });
 
     Route::middleware('isPetugas')->group( function() {
