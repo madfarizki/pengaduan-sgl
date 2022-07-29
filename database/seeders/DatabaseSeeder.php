@@ -14,5 +14,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        \App\Models\Petugas::create([
+            'nama_petugas'  => 'Administrator',
+            'username'  => 'admin',
+            'telp' => '082117564354',
+            'password'  => bcrypt('indonesia'),
+            'roles' => 'admin'
+        ]);
     }
 }

@@ -119,13 +119,13 @@
 
       <div class="me-md-auto my-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span><a href="https://madfariz.web.id/" target="_blank">MadFariz</a></span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span><a href="https://madfariz.my.id/" target="_blank">MadFariz</a></span></strong>. All Rights Reserved
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://github.com/AhmdFarzki" class="github"><i class="bx bxl-github"></i></a>
+        <a href="https://www.instagram.com/madfarizz/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/madfarizz" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->

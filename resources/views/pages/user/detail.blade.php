@@ -26,7 +26,15 @@
                 <div class="card card-responsive p-4 border-0 shadow rounded mx-auto text-center">
                     <img src="{{ $pengaduan->foto }}" alt="">
                     <h3>{{ $pengaduan->judul_laporan }}</h3>
-                    <p>{{ $pengaduan->status }}</p>
+                    <p>
+                        @if($pengaduan->status == '0')
+                            <span class="text-sm text-white p-1 bg-danger">Pending</span>
+                        @elseif($pengaduan->status == 'proses')
+                            <span class="text-sm text-white p-1 bg-warning">Proses</span>
+                        @else
+                            <span class="text-sm text-white p-1 bg-success">Selesai</span>
+                        @endif
+                    </p>
                     <p>{{ $pengaduan->isi_laporan }}</p>
                     <span class="text-sm badge badge-warning">Proses</span>
                </div>

@@ -4,7 +4,7 @@
       <div class="row align-items-center justify-content-lg-between">
         <div class="col">
           <div class="copyright text-center text-muted">
-            &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">MadFariz</a>
+            &copy; 2020 <a href="https://madfariz.my.id/" class="font-weight-bold ml-1" target="_blank">MadFariz</a>
           </div>
         </div>
         <!-- <div class="col-lg-6">
