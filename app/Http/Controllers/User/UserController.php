@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Carbon;
 
 class UserController extends Controller
 {
@@ -166,13 +167,14 @@ class UserController extends Controller
             'password' => Hash::make($data['password']),
             'telp' => $data['telp'],
             'address' => $data['address'],
+            'email_verified_at' => Carbon::now()
         ]);
 
         $masyarakat = Masyarakat::where('email', $data['email'])->first();
 
         Auth::guard('masyarakat')->login($masyarakat);
 
-        return redirect()->route('/');
+        return redirect('/pengaduan');
     }
 
     public function logout()
